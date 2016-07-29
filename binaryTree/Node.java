@@ -1,93 +1,83 @@
 package binaryTree;
 
-import expressions.ExpAbstract;
+import binaryTree.TreePrinter.PrintableNode;
+import equationHandler.Token;
 
-public class Node {
+public class Node implements PrintableNode {
 
-	private ExpAbstract value;
-	
-	public ExpAbstract getValue() {
-		return value;
+	public Node() {
+		
 	}
-
-	public void setValue(ExpAbstract value) {
+	public Node(Node leftSon) {
+		
+		this.leftSon = leftSon;
+	}	
+	public Node(Node leftSon, Node rightSon) {
+		
+		this.leftSon = leftSon;
+		this.rightSon = rightSon;
+		
+	}
+	public Node(Token value) {
+		this.value = value;
+	}
+	public Node(Node father, Token value) {
+		this.value = value;
+		this.father = father;
+	}
+	public Node(Node leftSon, Node rightSon, Token value) {
+		
+		this.leftSon = leftSon;
+		this.rightSon = rightSon;
 		this.value = value;
 	}
 	
+	private Node leftSon;
+	public Node getLeftSon() {
+
+		return leftSon;
+		
+	}	
+	public void setLeftSon(Node leftSon) {
+		this.leftSon = leftSon;
+	}
+
+	private Node rightSon;
+	public Node getRightSon() {
+		return rightSon;
+	}
+	public void setRightSon(Node rightSon) {
+		this.rightSon = rightSon;
+	}
+
 	private Node father;
-	
 	public Node getFather() {
 		return father;
 	}
-
 	public void setFather(Node father) {
 		this.father = father;
 	}
 
-	private Node left;
-	
-	
-	public Node getLeft() {
-		return left;
+	private Token value;
+	public Token getValue() {
+		return value;
 	}
-
-	public void setLeft(Node left) {
-		this.left = left;
-	}
-
-	private Node right;
-	
-	public Node getRight() {
-		return right;
-	}
-
-	public void setRight(Node right) {
-		this.right = right;
-	}
-
-	
-	public Node(ExpAbstract value) {
-		this.setValue(value);
-		this.left = null;
-		this.right = null;
-		this.father = null;
-	}
-	
-	public Node(Node father) {
-		this.father = father;
-	}
-	
-	public Node(ExpAbstract value, Node father) {
+	public void setValue(Token value) {
 		this.value = value;
-		this.father = father;
 	}
-
-	public Node(Node father, Node left, Node right) {
-		this.father = father;
-		this.left = left;
-		this.right = right;
-	}
-
-	public Node(ExpAbstract value, Node left, Node right) {
-		this.setValue(value);
-		this.left = left;
-		this.right = right;
-	}
-
-	public Node(ExpAbstract value, Node father, Node left, Node right) {
-		super();
-		this.value = value;
-		this.father = father;
-		this.left = left;
-		this.right = right;
-	}
-
 	@Override
-	public String toString() {
-		return this.getValue().toString();
+	public PrintableNode getLeft() {
+		return this.getLeftSon();
 	}
-	
-	
-	 
+	@Override
+	public PrintableNode getRight() {
+		return this.getRightSon();
+	}
+	@Override
+	public String getText() {
+		return this.getValue().getOpString();
+	}
+
+
 	
 }

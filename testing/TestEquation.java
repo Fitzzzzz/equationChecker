@@ -1,18 +1,23 @@
 package testing;
 
-import binaryTree.Node;
+import arithmeticParsing.Parser;
+import binaryTree.TreeBuilder;
+import binaryTree.TreePrinter;
 import equationHandler.Equation;
 
 public class TestEquation {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	 	String equation = "cueleagr=elecfagr/surirg*gsdfbfd/gsdfbnz-dfsbdbds"; 
+
+		String equation = "cueleagr=3+4*2/(1-5)"; 
 		Equation eq = new Equation(equation);
-		System.out.println(eq.getReceiver());
-		System.out.println(eq.getBody());
-		
-		
+		Parser tokenParser = new Parser(eq.getTokens());
+//		System.out.println(eq.getReceiver());
+//		System.out.println(eq.getBody());
+		System.out.println(tokenParser.getLList(tokenParser.getOutput()));
+		TreeBuilder tree = new TreeBuilder(tokenParser.getOutput());
+		TreePrinter.print(tree.getTree());
 	}
 
 }
+ 
