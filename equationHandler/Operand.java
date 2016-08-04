@@ -8,7 +8,7 @@ public abstract class Operand extends Token{
 
 	}
 	
-	public abstract int getValue();
+	public abstract int getValue(int year);
 
 	
 	

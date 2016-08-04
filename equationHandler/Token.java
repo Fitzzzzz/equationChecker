@@ -2,10 +2,10 @@ package equationHandler;
 
 public abstract class Token {
 
-	private String toString;
+	private String name;
 	
-	public String getOpString() {
-		return toString;
+	public String getName() {
+		return name;
 	}
 
 	private int type;
@@ -16,7 +16,7 @@ public abstract class Token {
 
 	public Token(String op, int type) {
 		
-		this.toString = op;
+		this.name = op;
 		this.type = type;
 		
 	}
@@ -24,7 +24,7 @@ public abstract class Token {
 	@Override
 	public String toString() {
 
-		return this.toString;
+		return this.name;
 	}
 
 	public boolean equals(String tested) {

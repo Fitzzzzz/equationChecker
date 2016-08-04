@@ -15,7 +15,7 @@ public class TreeBuilder {
 		this.tree = new Node();
 		constructTree(list, tree);
 		System.out.println(list);
-		System.out.println("result = " + postOrderEvaluation(tree));
+//		System.out.println("result = " + postOrderEvaluation(tree, 5));
 		
 	}
 
@@ -54,21 +54,20 @@ public class TreeBuilder {
 		}
 		
 	}
-	
 	/**
 	 * Is actually a reverse post-order evaluation...
-	 * @param top
 	 */
-	public static int postOrderEvaluation(Node node) {
+	public int postOrderEvaluation(Integer year) {
 		
-		System.out.print(node.getValue().getOpString());
+		Node node = this.tree;
+		System.out.print(node.getValue().getName());
 		
 		if (node.getValue().getType() == 0) {
-			return ((Operand) (node.getValue())).getValue();
+			return ((Operand) (node.getValue())).getValue(year);
 		}
-		int rightValue = postOrderEvaluation(node.getRightSon());
-		int leftValue = postOrderEvaluation(node.getLeftSon());
-		switch (node.getValue().getOpString()) {
+		int rightValue = postOrderEvaluation(node.getRightSon(), year);
+		int leftValue = postOrderEvaluation(node.getLeftSon(), year);
+		switch (node.getValue().getName()) {
 		case "+": 
 			return rightValue + leftValue;
 			
@@ -82,7 +81,40 @@ public class TreeBuilder {
 			return rightValue * leftValue;
 			
 		default:
-			System.out.println(node.getValue().getOpString() + " wasn't recognized");
+			System.out.println(node.getValue().getName() + " wasn't recognized");
+			return 0;
+				
+		}
+		
+	}
+	
+	/**
+	 * Is actually a reverse post-order evaluation...
+	 */
+	public static int postOrderEvaluation(Node node, Integer year) {
+		
+		System.out.print(node.getValue().getName());
+		
+		if (node.getValue().getType() == 0) {
+			return ((Operand) (node.getValue())).getValue(year);
+		}
+		int rightValue = postOrderEvaluation(node.getRightSon(), year);
+		int leftValue = postOrderEvaluation(node.getLeftSon(), year);
+		switch (node.getValue().getName()) {
+		case "+": 
+			return rightValue + leftValue;
+			
+		case "-":
+			return rightValue - leftValue;
+			
+		case "/":
+			return rightValue / leftValue;
+			
+		case "*":
+			return rightValue * leftValue;
+			
+		default:
+			System.out.println(node.getValue().getName() + " wasn't recognized");
 			return 0;
 				
 		}

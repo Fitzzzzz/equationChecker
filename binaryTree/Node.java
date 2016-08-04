@@ -75,7 +75,7 @@ public class Node implements PrintableNode {
 	}
 	@Override
 	public String getText() {
-		return this.getValue().getOpString();
+		return this.getValue().getName();
 	}
 
 

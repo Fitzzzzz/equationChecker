@@ -71,7 +71,7 @@ public class Equation {
 	private String[] split(String[] toSplit, PriorityToken separator) {
 		
 		
-		String operator = separator.getOpString(); // TODO: Ugly
+		String operator = separator.getName(); // TODO: Ugly
 		
 		String[] tmp;
 		String[] tmp2 = new String[0];

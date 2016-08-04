@@ -13,6 +13,12 @@ public class Constant extends Operand {
 
 	public int getValue() {
 		return value;
+	}
+
+	@Override
+	public int getValue(int year) {
+		// TODO Auto-generated method stub
+		return this.getValue();
 	} 
 	
 	
